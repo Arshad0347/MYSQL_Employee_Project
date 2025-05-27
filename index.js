@@ -25,6 +25,18 @@ app.post ('/add-employee',(req,res)=>{
     })
 })
 
+//Get All Employees;
+app.get('/get-employees',(req,res)=>{
+    const sql="SELECT * FROM `management`";
+    connection.query(sql,(error,result)=>{
+        if(error){
+            console.log(error);
+        }else{
+            res.status(200).send(result);
+        }
+    })
+})
+
 
 app.listen(port, () => {
     console.log(`Employee Management System listening on port ${port}`)
