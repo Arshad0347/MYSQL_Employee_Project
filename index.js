@@ -37,6 +37,18 @@ app.get('/get-employees',(req,res)=>{
     })
 })
 
+//Update Employees Details
+app.post('/update-employee/:name',(req,res)=>{
+    const sql="UPDATE `management` SET `name`=?";
+    connection.query(sql,[req.body.name],(error,result)=>{
+        if(error){
+            console.log(error);
+        }else{
+            res.status(200).send(result);
+        }
+    })
+})
+
 
 app.listen(port, () => {
     console.log(`Employee Management System listening on port ${port}`)
